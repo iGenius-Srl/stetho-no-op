@@ -15,6 +15,52 @@ debugCompile "com.facebook.stetho:stetho-okhttp3:${stethoVersion}"
 releaseCompile "net.igenius:stetho-no-op:1.1"
 ```
 
+```java
+public class App extends Application {
+
+    private static OkHttpClient httpClient;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        
+        if (BuildConfig.DEBUG) {
+            Stetho.initialize(
+                newInitializerBuilder(this)
+                    .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
+                    .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this))
+                    .build());
+        }
+    }
+    
+    /**
+     * Gets the instance of the application's HTTP client.
+     * @return OkHttp client instance, ready to make requests
+     */
+    public static OkHttpClient getHttpClient(final Context context) {
+        if (httpClient == null) {
+            OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder()
+                    .followRedirects(true)
+                    .followSslRedirects(true)
+                    .retryOnConnectionFailure(true)
+                    .cache(null)
+                    .connectTimeout(5, TimeUnit.SECONDS)
+                    .writeTimeout(10, TimeUnit.SECONDS)
+                    .readTimeout(10, TimeUnit.SECONDS);
+
+            if (BuildConfig.DEBUG) {
+                clientBuilder.addNetworkInterceptor(new StethoInterceptor());
+            }
+
+            httpClient = clientBuilder.build();
+        }
+
+        return httpClient;
+    }
+
+}
+```
+
 ## License <a name="license"></a>
 
     Copyright (C) 2017 iGenius Srl
