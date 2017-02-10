@@ -1,5 +1,5 @@
 # Stetho no-op library
-Having two different Application subclasses just for stetho (debug and release) is annoying, so to keep everything plain and simple, to use stetho just add this for debug and production release:
+Having two different Application subclasses just for [stetho](http://facebook.github.io/stetho/) (debug and release) is annoying, so to keep everything plain and simple, to use stetho just add this for debug and production release:
 
 ```groovy
 repositories {
@@ -14,8 +14,6 @@ debugCompile "com.facebook.stetho:stetho:${stethoVersion}"
 debugCompile "com.facebook.stetho:stetho-okhttp3:${stethoVersion}"
 releaseCompile "net.igenius:stetho-no-op:1.1"
 ```
-
-To publish your library on bintray, simply execute: `./gradlew clean assembleRelease bintrayUpload`
 
 ## License <a name="license"></a>
 
