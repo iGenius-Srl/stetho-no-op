@@ -7,7 +7,7 @@ repositories {
 }
 ```
 
-```
+```groovy
 def stethoVersion = "1.4.2"
 
 debugCompile "com.facebook.stetho:stetho:${stethoVersion}"
@@ -17,7 +17,7 @@ releaseCompile "net.igenius:stetho-no-op:1.1"
 
 ## License <a name="license"></a>
 
-    Copyright (C) 2013-2017 Aleksandar Gotev
+    Copyright (C) 2017 iGenius Srl
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
