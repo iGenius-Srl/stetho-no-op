@@ -15,6 +15,10 @@ public class Stetho {
 
     }
 
+    public static void initializeWithDefaults(final Context context) {
+
+    }
+
     public static DumperPluginsProvider defaultDumperPluginsProvider(Context context) {
         return null;
     }

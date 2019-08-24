@@ -21,12 +21,10 @@ def developerFullName = "iGenius Srl"
 group = projectGroup
 version = "1.1"
 
-def sdkVersion = 24;
-def toolsVersion = "24.0.3";
+def sdkVersion = 28
 
 android {
     compileSdkVersion sdkVersion
-    buildToolsVersion toolsVersion
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion sdkVersion
@@ -46,12 +44,11 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    testCompile 'junit:junit:4.12'
-    compile 'com.squareup.okhttp3:okhttp:3.+'
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.squareup.okhttp3:okhttp:3.14.2'
 }
 
 // add the following information to the file: local.properties situated in the parent directory of
